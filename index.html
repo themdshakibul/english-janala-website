@@ -5,21 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./src/output.css" rel="stylesheet" />
 
-    <!-- daisy UI font all  -->
+    <!-- Daisy UI font all  -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css"
       rel="stylesheet"
       type="text/css"
     />
 
-    <!-- title -->
-    <title>DOM Project</title>
+    <!-- icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <!-- Favicons -->
+    <link rel="shortcurt icon" href="./assets/logo.png" type="image/x-icon" />
+
+    <!-- Title -->
+    <title>English Janala | Berst Platform for larning English</title>
   </head>
-  <body>
+  <body class="font-Poppins container mx-auto">
     <header>
-      <nav>
-        <h2 class="text-center text-4xl">hello</h2>
-      </nav>
+      <div class="navbar bg-base-100 shadow-sm">
+        <div class="navbar-start">
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+            <ul
+              tabindex="-1"
+              class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow space-y-4"
+            >
+              <li>
+                <a href=""><i class="ri-question-fill text-xl"></i>FAQ</a>
+              </li>
+              <li>
+                <a href=""><i class="ri-book-open-fill text-xl"></i>Learn</a>
+              </li>
+              <li>
+                <a href=""
+                  ><i class="ri-logout-box-r-line text-xl"></i>Logout</a
+                >
+              </li>
+            </ul>
+          </div>
+          <a class="flex items-center gap-2 font-semibold">
+            <span class="text-lg">English</span>
+            <img class="w-fit" src="./assets/logo.png" alt="" />
+            <span class="font-bangla text-lg">জানালা</span>
+          </a>
+        </div>
+        <!-- navbar-right -->
+        <div class="navbar-end hidden lg:flex">
+          <ul class="menu menu-horizontal px-1 space-x-4">
+            <li>
+              <a href="" class="btn btn-outline btn-primary">
+                <i class="ri-question-fill text-xl"></i>FAQ</a
+              >
+            </li>
+            <li>
+              <a href="" class="btn btn-outline btn-primary"
+                ><i class="ri-book-open-fill text-xl"></i>Learn</a
+              >
+            </li>
+            <li>
+              <a href="" class="btn btn-outline btn-primary">
+                <i class="ri-logout-box-r-line text-xl"></i>Logout</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
     </header>
+    <main>
+      <section></section>
+    </main>
+    <footer>
+      <section></section>
+    </footer>
   </body>
 </html>
