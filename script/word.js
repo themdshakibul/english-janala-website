@@ -1,9 +1,53 @@
+const createElement = (arr) => {
+  const htmlElement = arr.map((el) => `<span class="btn">${el}</span>`);
+  return htmlElement.join(" ");
+};
+
+const removeActive = () => {
+  const lessonBtn = document.getElementById(".lesson-btn");
+  console.log(lessonBtn);
+  lessonBtn.forEach((btn) => btn.classList.remove("active"));
+};
+
 const LoadLessionWord = (id) => {
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
   console.log(url);
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayLessionsWords(data.data));
+    .then((data) => {
+      const clickBtn = document.getElementById(`lesson-btn-${id}`);
+      clickBtn.classList.add("active");
+      displayLessionsWords(data.data);
+    });
+};
+
+const loadWordsDetails = async (id) => {
+  const url = `https://openapi.programming-hero.com/api/word/${id}`;
+  const res = await fetch(url);
+  const details = await res.json();
+  displayWordDetails(details.data);
+};
+
+const displayWordDetails = (word) => {
+  const detailsBox = document.getElementById("details-container");
+  detailsBox.innerHTML = `
+    <div class="font-bold text-3xl">
+       ${word.word} (<i class="ri-mic-ai-fill text-2xl"></i> : ${word.pronunciation})
+    </div>
+    <div class="">
+       <h2 class="font-bold">Meaning</h2>
+       <p class="font-bangla">${word.meaning}</p>
+    </div>
+    <div class="">
+      <h2 class="font-bold">Example</h2>
+      <p>${word.sentence}</p>
+    </div>
+    <div class="">
+      <p class="font-bold">Synonyms</p>
+      <div class="flex gap-3">${createElement(word.synonyms)}</div>
+    </div>
+  `;
+  document.getElementById("word_modal").showModal();
 };
 
 // display show words
@@ -39,7 +83,8 @@ const displayLessionsWords = (words) => {
           <p class="text-xl font-medium">Meaning /Pronounciation</p>
           <div class="text-4xl font-semibold font-bangla">"${word.meaning ? word.meaning : "অর্থ পাওয়া যায়নি"} / ${word.pronunciation ? word.pronunciation : "Pronounciation পাওয়া যায়নি"}"</div>
           <div class="flex justify-between items-center">
-            <button
+          <button
+              onclick="loadWordsDetails(${word.id})"
               class="bg-gray-500/20 hover:bg-[#3b25c1] hover:text-white py-0.5 px-2 rounded-md"
             >
               <i class="ri-information-2-fill text-3xl"></i>
