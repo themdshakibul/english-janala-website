@@ -35,9 +35,9 @@ const displayLessionsWords = (words) => {
       <div
           class="bg-white py-14 px-7 rounded-md text-center shadow-xl space-y-4"
         >
-          <h2 class="text-2xl font-bold">${word.word}</h2>
+          <h2 class="text-2xl font-bold">${word.word ? word.word : "শব্দ পাওয়া যায়নি"}</h2>
           <p class="text-xl font-medium">Meaning /Pronounciation</p>
-          <div class="text-4xl font-semibold font-bangla">"${word.meaning} / ${word.pronunciation}"</div>
+          <div class="text-4xl font-semibold font-bangla">"${word.meaning ? word.meaning : "অর্থ পাওয়া যায়নি"} / ${word.pronunciation ? word.pronunciation : "Pronounciation পাওয়া যায়নি"}"</div>
           <div class="flex justify-between items-center">
             <button
               class="bg-gray-500/20 hover:bg-[#3b25c1] hover:text-white py-0.5 px-2 rounded-md"
