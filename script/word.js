@@ -3,13 +3,34 @@ const createElement = (arr) => {
   return htmlElement.join(" ");
 };
 
+const manageSpinner = (status) => {
+  if (status == true) {
+    document.getElementById("spinner").classList.remove("hidden");
+    document.getElementById("word-container").classList.add("hidden");
+  } else {
+    document.getElementById("word-container").classList.remove("hidden");
+    document.getElementById("spinner").classList.add("hidden");
+  }
+};
+
+const loadLession = () => {
+  fetch("https://openapi.programming-hero.com/api/levels/all")
+    .then((res) => res.json())
+    .then((json) => {
+      //   console.log(json);
+      displayLessions(json.data);
+    });
+};
+
 const removeActive = () => {
-  const lessonBtn = document.getElementById(".lesson-btn");
+  const lessonBtn = document.querySelectorAll(".lesson-btn");
   console.log(lessonBtn);
   lessonBtn.forEach((btn) => btn.classList.remove("active"));
+  console.log(document.querySelector(".active"));
 };
 
 const LoadLessionWord = (id) => {
+  manageSpinner(true);
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
   console.log(url);
   fetch(url)
@@ -42,7 +63,7 @@ const displayWordDetails = (word) => {
       <h2 class="font-bold">Example</h2>
       <p>${word.sentence}</p>
     </div>
-    <div class="">
+    <div class="space-y-3">
       <p class="font-bold">Synonyms</p>
       <div class="flex gap-3">${createElement(word.synonyms)}</div>
     </div>
@@ -68,6 +89,7 @@ const displayLessionsWords = (words) => {
         <h2 class="font-medium text-5xl font-bangla">নেক্সট Lesson এ যান</h2>
       </div>
     `;
+    manageSpinner(false);
     return;
   }
 
@@ -101,4 +123,46 @@ const displayLessionsWords = (words) => {
     // 4. append into container
     wordContainer.append(card);
   });
+  manageSpinner(false);
 };
+
+// display show lessons
+const displayLessions = (lessons) => {
+  // 1. Get the container & empty
+  const levelContainer = document.getElementById("level-container");
+  levelContainer.innerHTML = "";
+
+  // 2. Get into every levels
+  for (const lesson of lessons) {
+    console.log(lesson);
+    // 3. Create Element
+    const btnDiv = document.createElement("div");
+    btnDiv.innerHTML = `
+        <button id="lesson-btn-${lesson.level_no}"
+        onclick="LoadLessionWord(${lesson.level_no})" class="btn btn-outline btn-primary">
+            <i class="ri-book-open-fill text-xl py-5"></i>Level - ${lesson.level_no}
+        </button>
+    `;
+    // 4. append into container
+    levelContainer.append(btnDiv);
+  }
+};
+
+loadLession();
+
+document.getElementById("btn-search").addEventListener("click", function () {
+  removeActive();
+  const input = document.getElementById("input-search");
+  const searchValue = input.value.trim().toLowerCase();
+  fetch("https://openapi.programming-hero.com/api/words/all")
+    .then((res) => res.json())
+    .then((data) => {
+      const allWords = data.data;
+      console.log(allWords);
+      const filterWords = allWords.filter((word) =>
+        word.word.toLowerCase().includes(searchValue),
+      );
+      displayLessionsWords(filterWords);
+    });
+  input.value = "";
+});
