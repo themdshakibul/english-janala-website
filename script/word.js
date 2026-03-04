@@ -80,7 +80,7 @@ const displayLessionsWords = (words) => {
   if (words.length == 0) {
     wordContainer.innerHTML = `
         <div
-        class="text-center flex flex-col col-span-full items-center justify-center space-y-5 rounded-md p-10 "
+        class="text-center flex flex-col col-span-full items-center justify-center space-y-5 rounded-md p-10 bg-base-100 text-base-content"
         >
         <img src="./assets/alert-error.png" alt="" />
         <p class="text-2xl font-bangla">
@@ -99,7 +99,7 @@ const displayLessionsWords = (words) => {
     const card = document.createElement("div");
     card.innerHTML = `
       <div
-          class="bg-white py-14 px-7 rounded-md text-center shadow-xl space-y-4"
+          class="bg-base-100 text-base-content py-14 px-7 rounded-md text-center shadow-xl space-y-4"
         >
           <h2 class="text-2xl font-bold">${word.word ? word.word : "শব্দ পাওয়া যায়নি"}</h2>
           <p class="text-xl font-medium">Meaning /Pronounciation</p>
