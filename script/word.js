@@ -24,20 +24,19 @@ const loadLession = () => {
 
 const removeActive = () => {
   const lessonBtn = document.querySelectorAll(".lesson-btn");
-  console.log(lessonBtn);
   lessonBtn.forEach((btn) => btn.classList.remove("active"));
-  console.log(document.querySelector(".active"));
+  // console.log(document.querySelector(".active"));
 };
 
 const LoadLessionWord = (id) => {
   manageSpinner(true);
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
-  console.log(url);
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
+      removeActive(); // remove all cative class
       const clickBtn = document.getElementById(`lesson-btn-${id}`);
-      clickBtn.classList.add("active");
+      clickBtn.classList.add("active"); // add active class
       displayLessionsWords(data.data);
     });
 };
@@ -49,6 +48,7 @@ const loadWordsDetails = async (id) => {
   displayWordDetails(details.data);
 };
 
+// display show word details
 const displayWordDetails = (word) => {
   const detailsBox = document.getElementById("details-container");
   detailsBox.innerHTML = `
@@ -134,12 +134,11 @@ const displayLessions = (lessons) => {
 
   // 2. Get into every levels
   for (const lesson of lessons) {
-    console.log(lesson);
     // 3. Create Element
     const btnDiv = document.createElement("div");
     btnDiv.innerHTML = `
         <button id="lesson-btn-${lesson.level_no}"
-        onclick="LoadLessionWord(${lesson.level_no})" class="btn btn-outline btn-primary">
+        onclick="LoadLessionWord(${lesson.level_no})" class="btn btn-outline btn-primary lesson-btn">
             <i class="ri-book-open-fill text-xl py-5"></i>Level - ${lesson.level_no}
         </button>
     `;
@@ -158,7 +157,6 @@ document.getElementById("btn-search").addEventListener("click", function () {
     .then((res) => res.json())
     .then((data) => {
       const allWords = data.data;
-      console.log(allWords);
       const filterWords = allWords.filter((word) =>
         word.word.toLowerCase().includes(searchValue),
       );

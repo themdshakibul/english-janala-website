@@ -24,73 +24,77 @@
     <!-- Title -->
     <title>English Janala | Berst Platform for larning English</title>
   </head>
-  <body class="font-Poppins container mx-auto">
+  <body class="font-Poppins">
     <header>
-      <div class="navbar bg-base-100 shadow-sm">
-        <div class="navbar-start">
-          <div class="dropdown">
-            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+      <!-- navbar -->
+      <nav class="bg-base-100 shadow-sm">
+        <div class="container mx-auto navbar">
+          <div class="navbar-start">
+            <div class="dropdown">
+              <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />
+                </svg>
+              </div>
+              <ul
+                tabindex="-1"
+                class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow space-y-4"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
+                <li>
+                  <a href=""><i class="ri-question-fill text-xl"></i>FAQ</a>
+                </li>
+                <li>
+                  <a href=""><i class="ri-book-open-fill text-xl"></i>Learn</a>
+                </li>
+                <li>
+                  <a href=""
+                    ><i class="ri-logout-box-r-line text-xl"></i>Logout</a
+                  >
+                </li>
+              </ul>
             </div>
-            <ul
-              tabindex="-1"
-              class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow space-y-4"
-            >
+            <a class="flex items-center gap-2 font-semibold">
+              <span class="text-lg">English</span>
+              <img class="w-fit" src="./assets/logo.png" alt="" />
+              <span class="font-bangla text-lg">জানালা</span>
+            </a>
+          </div>
+          <!-- navbar-right -->
+          <div class="navbar-end hidden lg:flex">
+            <ul class="menu menu-horizontal px-1 space-x-4">
               <li>
-                <a href=""><i class="ri-question-fill text-xl"></i>FAQ</a>
+                <a href="" class="btn btn-outline btn-primary">
+                  <i class="ri-question-fill text-xl"></i>FAQ</a
+                >
               </li>
               <li>
-                <a href=""><i class="ri-book-open-fill text-xl"></i>Learn</a>
+                <a href="#learnVocablaries" class="btn btn-outline btn-primary"
+                  ><i class="ri-book-open-fill text-xl"></i>Learn</a
+                >
               </li>
               <li>
-                <a href=""
-                  ><i class="ri-logout-box-r-line text-xl"></i>Logout</a
+                <a href="" class="btn btn-outline btn-primary">
+                  <i class="ri-logout-box-r-line text-xl"></i>Logout</a
                 >
               </li>
             </ul>
           </div>
-          <a class="flex items-center gap-2 font-semibold">
-            <span class="text-lg">English</span>
-            <img class="w-fit" src="./assets/logo.png" alt="" />
-            <span class="font-bangla text-lg">জানালা</span>
-          </a>
         </div>
-        <!-- navbar-right -->
-        <div class="navbar-end hidden lg:flex">
-          <ul class="menu menu-horizontal px-1 space-x-4">
-            <li>
-              <a href="" class="btn btn-outline btn-primary">
-                <i class="ri-question-fill text-xl"></i>FAQ</a
-              >
-            </li>
-            <li>
-              <a href="" class="btn btn-outline btn-primary"
-                ><i class="ri-book-open-fill text-xl"></i>Learn</a
-              >
-            </li>
-            <li>
-              <a href="" class="btn btn-outline btn-primary">
-                <i class="ri-logout-box-r-line text-xl"></i>Logout</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
+      </nav>
     </header>
-    <main>
+    <main class="container mx-auto">
+      <!-- hero section -->
       <section class="mb-20 md:mb-34 lg:mb-40">
         <div
           class="flex flex-col-reverse md:flex-row items-center gap-10 py-5 w-11/12 mx-auto"
@@ -119,9 +123,11 @@
                   class="input"
                   placeholder="Password"
                 /><br />
-                <button class="btn btn-primary mt-4 md:w-fit">
-                  Get Started
-                </button>
+                <a href="#learnVocablaries"
+                  ><button class="btn btn-primary mt-4 md:w-fit">
+                    Get Started
+                  </button></a
+                >
               </fieldset>
             </div>
           </div>
@@ -131,9 +137,10 @@
         </div>
       </section>
 
+      <!-- Learn & Lessons section -->
       <section>
         <div class="text-center space-y-5">
-          <h2 class="font-bold text-4xl">
+          <h2 id="learnVocablaries" class="font-bold text-4xl">
             <span class="text-sky-500">Let's</span> Learn Vocabularies
           </h2>
           <!-- button's -->
@@ -170,6 +177,7 @@
         </div>
       </section>
 
+      <!-- Word load and added -->
       <section
         id="word-container"
         class="mb-20 md:mb-34 lg:mb-40 bg-gray-100 p-10 py-20 grid md:grid-cols-2 lg:grid-cols-3 gap-5 items-center justify-center"
@@ -190,10 +198,11 @@
         </dialog>
       </section>
     </main>
+
     <footer>
-      <section>
+      <section class="bg-base-300/90">
         <footer
-          class="footer flex flex-col md:flex-row justify-between i bg-base-200 text-base-content border-base-300 border-t px-10 pt-10 md:pt-20 pb-5"
+          class="footer container mx-auto flex flex-col md:flex-row justify-between i text-base-content border-base-300 border-t px-10 pt-10 md:pt-20 pb-5"
         >
           <aside class="grid items-center">
             <a class="flex items-center gap-2 font-semibold">
@@ -204,14 +213,14 @@
             <p class="font-bangla text-xl font-semibold">ইংলিশ শিখুন সহজে</p>
             <p>Providing ED-Tech Applications since 2025</p>
           </aside>
-          <nav class="flex flex-col gap-4 justify-end md:h-30">
+          <div class="flex flex-col gap-4 justify-end md:h-30">
             <p class="font-semibold">FOLLOW US</p>
             <div class="flex gap-5 items-center">
               <a href=""><img src="./assets/fb-thumb.png" alt="" /></a>
               <a href=""><img src="./assets/instagram-thumb.png" alt="" /></a>
               <a href=""><img src="./assets/github-thumb.png" alt="" /></a>
             </div>
-          </nav>
+          </div>
         </footer>
       </section>
     </footer>
